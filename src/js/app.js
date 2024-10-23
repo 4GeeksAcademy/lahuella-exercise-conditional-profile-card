@@ -34,14 +34,17 @@ function render(variables = {}) {
   if (variables.city == null) variables.city = "Your City";
   if (variables.country == null) variables.country = "Your Country";
   if (variables.bestLanguage == null) variables.bestLanguage = "Best Language";
+  if (variables.avatarURL == null)
+    variables.avatarURL =
+      "https://png.pngtree.com/png-vector/20220607/ourmid/pngtree-person-gray-photo-placeholder-man-silhouette-on-white-background-png-image_4853539.png";
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
           <h1>${variables.name} ${variables.lastName}</h1>
           <h2>${variables.role}</h2>
-          <h4>${variables.bestLanguage}</h4>
-          <h3>${variables.city}, ${variables.country}</h3>
+          <h3>${variables.bestLanguage}</h3>
+          <h4>${variables.city}, ${variables.country}</h4>
           <ul class= ${variables.socialMediaPosition}>
             <li><a href="https://twitter.com/${variables.twitter}"><i class="fab fa-twitter"></i></a></li>
             <li><a href="https://github.com/${variables.github}"><i class="fab fa-github"></i></a></li>
@@ -60,9 +63,11 @@ window.onload = function() {
     // if includeCover is true the algorithm should show the cover image
     includeCover: true,
     // this is the image's url that will be used as a background for the profile cover
-    background: "https://images.unsplash.com/photo-1511974035430-5de47d3b95da",
+    background:
+      "https://officebanao.com/wp-content/uploads/2024/03/modern-office-room-with-white-walls.jpg",
     // this is the url for the profile avatar
-    avatarURL: "https://randomuser.me/api/portraits/women/42.jpg",
+    avatarURL:
+      "https://png.pngtree.com/png-vector/20220607/ourmid/pngtree-person-gray-photo-placeholder-man-silhouette-on-white-background-png-image_4853539.png",
     // social media bar position (left or right)
     socialMediaPosition: "position-left",
     // social media usernames
@@ -78,6 +83,23 @@ window.onload = function() {
     city: null
   };
   render(window.variables); // render the card for the first time
+  const avatars = {
+    Placeholder:
+      "https://png.pngtree.com/png-vector/20220607/ourmid/pngtree-person-gray-photo-placeholder-man-silhouette-on-white-background-png-image_4853539.png",
+    FemaleAvatar:
+      "https://img.freepik.com/foto-gratis/muy-sonriente-alegremente-femenina-cabello-rubio-vestida-casualmente-mirando-satisfaccion_176420-15187.jpg",
+    MaleAvatar:
+      "https://r2.erweima.ai/imgcompressed/img/compressed_c5b0073e2f4244f269ef19b63b36acaa.webp"
+  };
+  document
+    .getElementById("avatarSelector")
+    .addEventListener("change", function(e) {
+      const selectedAvatar = e.target.value;
+      if (selectedAvatar && avatars[selectedAvatar]) {
+        window.variables.avatarURL = avatars[selectedAvatar];
+        render(window.variables);
+      }
+    });
 
   document.querySelectorAll(".picker").forEach(function(elm) {
     elm.addEventListener("change", function(e) {
