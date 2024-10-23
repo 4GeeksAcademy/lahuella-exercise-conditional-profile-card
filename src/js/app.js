@@ -33,17 +33,19 @@ function render(variables = {}) {
   if (variables.role == null) variables.role = "Your Job";
   if (variables.city == null) variables.city = "Your City";
   if (variables.country == null) variables.country = "Your Country";
+  if (variables.bestLanguage == null) variables.bestLanguage = "Best Language";
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
           <h1>${variables.name} ${variables.lastName}</h1>
           <h2>${variables.role}</h2>
+          <h4>${variables.bestLanguage}</h4>
           <h3>${variables.city}, ${variables.country}</h3>
           <ul class= ${variables.socialMediaPosition}>
             <li><a href="https://twitter.com/${variables.twitter}"><i class="fab fa-twitter"></i></a></li>
             <li><a href="https://github.com/${variables.github}"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/${variables.linkedin}"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://linkedin.com/in/${variables.linkedin}"><i class="fab fa-linkedin"></i></a></li>
             <li><a href="https://instagram.com/${variables.instagram}"><i class="fab fa-instagram"></i></a></li>
           </ul>
         </div>
@@ -71,6 +73,7 @@ window.onload = function() {
     name: null,
     lastName: null,
     role: null,
+    bestLanguage: null,
     country: null,
     city: null
   };
