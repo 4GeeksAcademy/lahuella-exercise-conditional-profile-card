@@ -91,12 +91,29 @@ window.onload = function() {
     MaleAvatar:
       "https://r2.erweima.ai/imgcompressed/img/compressed_c5b0073e2f4244f269ef19b63b36acaa.webp"
   };
+  const backgrounds = {
+    OfficeImg:
+      "https://officebanao.com/wp-content/uploads/2024/03/modern-office-room-with-white-walls.jpg",
+    CityImg:
+      "https://as2.ftcdn.net/v2/jpg/03/10/42/27/1000_F_310422728_gvGj4cxa8MZDbJOPws9MgQXUslt7jpxF.jpg",
+    HouseImg:
+      "https://postandporch.com/cdn/shop/articles/AdobeStock_209124760.jpg?v=1662575433&width=1440"
+  };
   document
     .getElementById("avatarSelector")
     .addEventListener("change", function(e) {
       const selectedAvatar = e.target.value;
       if (selectedAvatar && avatars[selectedAvatar]) {
         window.variables.avatarURL = avatars[selectedAvatar];
+        render(window.variables);
+      }
+    });
+  document
+    .getElementById("backgroundSelector")
+    .addEventListener("change", function(e) {
+      const selectedBackground = e.target.value;
+      if (selectedBackground && backgrounds[selectedBackground]) {
+        window.variables.background = backgrounds[selectedBackground];
         render(window.variables);
       }
     });
