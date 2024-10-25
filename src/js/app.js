@@ -50,7 +50,7 @@ function render(variables = {}) {
         </div>
         <style>
       .widget ul li:hover > a {
-        background-color: ${hoverColor}; /* Color de hover dinámico */
+        background-color: ${hoverColor};
       }
     </style>
     `;
